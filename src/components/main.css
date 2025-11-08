@@ -1,0 +1,50 @@
+body {
+    background: linear-gradient(0deg,rgba(145, 215, 242, 1) 0%, rgba(146, 252, 199, 1) 100%);
+    overflow: hidden;
+
+
+    .main {
+
+        .stopwatch {
+            
+            .text {
+                margin-top: 40%;
+                margin-bottom: 30%;
+                font-size: clamp(4px, 15vw, 70px); 
+            }
+
+            .alarm {
+                animation: Alarm 1.0s infinite ease-in;
+            }
+
+            .AlarmOverlay {
+                position: absolute;
+                width: 100vw;
+                height: 100vh;
+                scale:10;
+                animation: OverlayAlarm 1.0s infinite ease-in;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+@keyframes Alarm {
+    0% {
+        color: blue;
+        text-shadow: 0px 0px 20px blue;
+    }
+    100% {
+        color: black;
+        text-shadow: none;
+    }
+}
+
+@keyframes OverlayAlarm {
+    0% {
+        background-color: rgba(255, 0, 0, 0.5);
+    }
+    75% {
+        background-color: rgba(255,0,0,0);
+    }
+}
