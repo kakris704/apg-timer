@@ -1,0 +1,2 @@
+body{background:linear-gradient(0deg,#91d7f2,#92fcc7);overflow:hidden;.main{.stopwatch{.text{font-size:clamp(4px,15vw,70px);margin-bottom:30%;margin-top:40%}.alarm{animation:Alarm 1s ease-in infinite}.AlarmOverlay{animation:OverlayAlarm 1s ease-in infinite;height:100vh;pointer-events:none;position:absolute;scale:10;width:100vw}}}}@keyframes Alarm{0%{color:blue;text-shadow:0 0 20px blue}to{color:#000;text-shadow:none}}@keyframes OverlayAlarm{0%{background-color:#ff000080}75%{background-color:#f000}}
+/*# sourceMappingURL=main.1b519b11.css.map*/
