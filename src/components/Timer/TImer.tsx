@@ -1,4 +1,4 @@
-import { FormControl, IconButton, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material'
+import { Button, FormControl, IconButton, InputLabel, MenuItem, Select, SelectChangeEvent, Stack, Typography } from '@mui/material'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import StopIcon from '@mui/icons-material/Stop';
@@ -50,7 +50,10 @@ const TImer = () => {
     prevTime.current = Date.now();
     setIsSetTime(false);
     if(!isActive) tick();
+    setIsActive(false);
     setStartAlarm(false);
+    setTimerMinute("0");
+    setTimerSecond("0");
   }
 
   // 起動中
@@ -103,7 +106,7 @@ const TImer = () => {
     <div className='stopwatch'>
         {isStartAlarm ? 
         <p className='text alarm'>00:00.00</p> : 
-        <p className='text'>{(hour!==0) ? ((hour<10) ? "0"+hour+":" : hour+":") : ""}{(minute<10) ? "0"+minute : minute}:{(second<10) ? "0"+second.toFixed(2):second.toFixed(2)}</p>}
+        <p className='text'>{(hour!==0) ? ((hour<10) ? "0"+hour+":" : hour+":") : ""}{(minute<10) ? "0"+minute : minute}:{(second<10) ? "0"+second.toFixed(0):second.toFixed(0)}</p>}
         {isSetTime ? <>
         <IconButton sx={{border: '1px solid gray',margin:'5%'}} onClick={() => {restartOnClick();}}>
           <RestartAltIcon fontSize='large'/>
@@ -114,6 +117,9 @@ const TImer = () => {
         </IconButton> : <></> }</> :
         <>
             <div className='set-timer'>
+            <Button variant='outlined' sx={{margin:1}} size="medium" onClick={() => setTimerMinute(String(15))}>15分</Button>
+            <Button variant='outlined' sx={{margin:1}} size="medium" onClick={() => setTimerMinute(String(60))}>60分</Button>
+            <div className='timer-input'>
             <FormControl size="small" sx={{m:3}}>
             <InputLabel id="timer-minute-setter">分</InputLabel>
             <Select
@@ -126,8 +132,8 @@ const TImer = () => {
                 label="分"
             >
                 {
-                    // 0~59まで生成
-                    Array(60).fill(0).map((val, i) => {
+                    // 0~60まで生成
+                    Array(61).fill(0).map((val, i) => {
                         return (
                             <MenuItem value={i}>{i}</MenuItem>
                         );
@@ -156,6 +162,7 @@ const TImer = () => {
                 }
             </Select>
             </FormControl>
+            </div>
             </div>
             <IconButton  sx={{border:'1px solid gray'}} onClick={handleTimerStart}>
                 <PlayArrowIcon fontSize='large'></PlayArrowIcon>
